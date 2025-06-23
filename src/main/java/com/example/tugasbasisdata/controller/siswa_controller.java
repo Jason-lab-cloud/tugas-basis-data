@@ -10,8 +10,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class siswa_controller {
-    @FXML
-    private Button Biodata;
 
     private int id;
 

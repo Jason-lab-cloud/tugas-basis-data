@@ -10,4 +10,6 @@ module com.example.tugasbasisdata {
     exports com.example.tugasbasisdata;
     exports com.example.tugasbasisdata.source;
     opens com.example.tugasbasisdata.source to javafx.fxml;
+    exports com.example.tugasbasisdata.controller;
+    opens com.example.tugasbasisdata.controller to javafx.fxml;
 }

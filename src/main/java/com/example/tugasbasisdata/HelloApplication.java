@@ -8,6 +8,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class HelloApplication extends Application {
+    private static HelloApplication applicationInstance;
+    private Stage primaryStage;
+    public static HelloApplication getApplicationInstance () { return applicationInstance; }
+    public Stage getPrimaryStage () { return primaryStage; }
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));

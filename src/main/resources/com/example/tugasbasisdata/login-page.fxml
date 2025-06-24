@@ -9,7 +9,7 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER_LEFT" spacing="15.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="com.example.tugasbasisdata.controller.HelloController">
+<VBox alignment="CENTER_LEFT" spacing="15.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="com.example.tugasbasisdata.controller.loginPageController">
 
     <padding>
         <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />

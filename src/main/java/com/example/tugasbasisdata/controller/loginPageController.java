@@ -13,7 +13,7 @@ import javafx.scene.control.Alert.AlertType;
 import java.io.IOException;
 import java.sql.*;
 import com.example.tugasbasisdata.source.datasource;
-public class HelloController {
+public class loginPageController {
 
     @FXML
     private ComboBox<String> roleComboBox;

@@ -9,6 +9,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+
+import java.io.IOException;
 import java.sql.*;
 import com.example.tugasbasisdata.source.datasource;
 public class HelloController {
@@ -38,18 +40,27 @@ public class HelloController {
             ResultSet rs = stmt.executeQuery();
             if (rs.next()){
                 if (selectedRole.equals("admin")){
-
+                    app.getPrimaryStage().setTitle("admin View");
+                    loader = new FXMLLoader(HelloApplication.class.getResource("admin.fxml"));
+                    scene = new Scene(loader.load());
+                    app.getPrimaryStage().setScene(scene);
                 }
                 else if (selectedRole.equals("siswa")){
-
+                    app.getPrimaryStage().setTitle("siswa View");
+                    loader = new FXMLLoader(HelloApplication.class.getResource("siswa.fxml"));
+                    scene = new Scene(loader.load());
+                    app.getPrimaryStage().setScene(scene);
                 }
                 else {
-
+                    app.getPrimaryStage().setTitle("guru View");
+                    loader = new FXMLLoader(HelloApplication.class.getResource("guru.fxml"));
+                    scene = new Scene(loader.load());
+                    app.getPrimaryStage().setScene(scene);
                 }
             } else {
                 showAlert("Login Success", "login sebagai " + selectedRole);
             }
-        } catch (SQLException e) {
+        } catch (SQLException | IOException e) {
             throw new RuntimeException(e);
         }
     }

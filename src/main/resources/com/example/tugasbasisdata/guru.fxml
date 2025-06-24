@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER_LEFT" spacing="15" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.12" fx:controller="com.example.tugasbasisdata.controller.guruController">
+
+    <padding>
+        <Insets bottom="20" left="20" right="20" top="20" />
+    </padding>
+
+    <Label style="-fx-font-size: 18px;" text="Halaman Guru" />
+
+    <Button text="Lihat Jadwal Kelas" textAlignment="CENTER" />
+    <Button text="Input Nilai Ujian" textAlignment="CENTER" />
+
+    <TableView fx:id="tabelData" prefHeight="300" prefWidth="600" />
+
+</VBox>

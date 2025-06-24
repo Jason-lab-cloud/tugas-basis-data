@@ -2,14 +2,13 @@ package com.example.tugasbasisdata.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import com.example.tugasbasisdata.source.datasource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class siswa_controller {
+public class siswaController {
 
     private int id;
 

@@ -1,4 +1,4 @@
 package com.example.tugasbasisdata.controller;
 
-public class homeroom_controller {
+public class homeroomController {
 }

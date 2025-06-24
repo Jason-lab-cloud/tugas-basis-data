@@ -19,7 +19,7 @@ public class HelloController {
     private ComboBox<String> roleComboBox;
 
     @FXML
-    private PasswordField passwordField;
+    private PasswordField passwordField1;
 
     @FXML
     private PasswordField UsernameField;
@@ -30,22 +30,26 @@ public class HelloController {
         FXMLLoader loader;
         Scene scene;
         String selectedRole = roleComboBox.getValue();
-        String password = passwordField.getText();
+        String password = passwordField1.getText();
         String Username = UsernameField.getText();
         try (Connection c = datasource.getConnection()){
+            System.out.println("jesus");
             PreparedStatement stmt = c.prepareStatement("select * from users where username = ? and password = ? and role = ?;") ;
             stmt.setString(1, Username);
             stmt.setString(2,password);
             stmt.setString(3, selectedRole.toLowerCase());
             ResultSet rs = stmt.executeQuery();
             if (rs.next()){
-                if (selectedRole.equals("admin")){
+                System.out.println("hello");
+                if (selectedRole.equals("Admin")){
+                    System.out.println("check1");
                     app.getPrimaryStage().setTitle("admin View");
                     loader = new FXMLLoader(HelloApplication.class.getResource("admin.fxml"));
                     scene = new Scene(loader.load());
                     app.getPrimaryStage().setScene(scene);
+                    adminController adminController = loader.getController();
                 }
-                else if (selectedRole.equals("siswa")){
+                else if (selectedRole.equals("Student")){
                     app.getPrimaryStage().setTitle("siswa View");
                     loader = new FXMLLoader(HelloApplication.class.getResource("siswa.fxml"));
                     scene = new Scene(loader.load());

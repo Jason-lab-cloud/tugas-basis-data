@@ -1,5 +1,8 @@
 package com.example.tugasbasisdata.dtos;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class kelas {
     private int kelas_id;
     private int kelas_tingkat;
@@ -43,5 +46,10 @@ public class kelas {
         this.kelas_tingkat = kelas_tingkat;
         this.nama_kelas = nama_kelas;
         this.homeroom_teacher_id = homeroom_teacher_id;
+    }
+    public kelas(ResultSet rs) throws SQLException {
+        this.kelas_id = rs.getInt("kelas_id");
+        this.nama_kelas = rs.getString("nama_kelas");
+        this.homeroom_teacher_id = rs.getInt("homeroom_teacher_id");
     }
 }

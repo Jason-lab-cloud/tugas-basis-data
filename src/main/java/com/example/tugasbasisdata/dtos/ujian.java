@@ -1,5 +1,8 @@
 package com.example.tugasbasisdata.dtos;
 
+import javax.xml.transform.Result;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 
 public class ujian {
@@ -75,5 +78,14 @@ public class ujian {
         this.score = score;
         this.notes = notes;
         this.date = date;
+    }
+    public ujian(ResultSet rs) throws SQLException {
+        this.ujian_id = rs.getInt("test_id");
+        this.siswa_id = rs.getInt("siswa_id");
+        this.subject_id = rs.getInt("subject_id");
+        this.test_name = rs.getString("test_name");
+        this.score = rs.getInt("nilai");
+        this.notes = rs.getString("notes");
+        this.date = rs.getDate("date");
     }
 }

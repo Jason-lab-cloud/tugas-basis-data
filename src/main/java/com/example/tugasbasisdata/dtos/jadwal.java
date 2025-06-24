@@ -1,5 +1,7 @@
 package com.example.tugasbasisdata.dtos;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Time;
 
 public class jadwal {
@@ -75,5 +77,14 @@ public class jadwal {
         this.kelas_id = kelas_id;
         this.guru_id = guru_id;
         this.subject_id = subject_id;
+    }
+    public jadwal(ResultSet rs) throws SQLException {
+        this.jadwal_id = rs.getInt("scedule_id");
+        this.day = rs.getInt("day");
+        this.awal = rs.getTime("start_time");
+        this.akhir = rs.getTime("end_time");
+        this.kelas_id = rs.getInt("class_id");
+        this.guru_id = rs.getInt("teacher_id");
+        this.subject_id = rs.getInt("subject_id");
     }
 }

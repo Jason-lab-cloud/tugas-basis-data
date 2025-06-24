@@ -1,5 +1,9 @@
 package com.example.tugasbasisdata.dtos;
 
+import javax.xml.transform.Result;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class user {
     private int user_id;
     private String username;
@@ -43,5 +47,11 @@ public class user {
         this.username = username;
         this.password = password;
         this.role = role;
+    }
+    public user(ResultSet rs) throws SQLException {
+        this.user_id = rs.getInt("user_id");
+        this.username = rs.getString("username");
+        this.password = rs.getString("password");
+        this.role = rs.getString("role");
     }
 }

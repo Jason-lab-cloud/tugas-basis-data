@@ -1,5 +1,7 @@
 package com.example.tugasbasisdata.dtos;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 
 public class siswa {
@@ -75,5 +77,14 @@ public class siswa {
         this.gender = gender;
         this.user_id = user_id;
         this.class_id = class_id;
+    }
+    public siswa(ResultSet rs) throws SQLException {
+        this.siswa_id = rs.getInt("siswa_id");
+        this.name = rs.getString("name");
+        this.birthdate = rs.getDate("birth_date");
+        this.address = rs.getString("address");
+        this.gender = rs.getString("gender");
+        this.class_id = rs.getInt("class_id");
+        this.user_id = rs.getInt("user_id");
     }
 }

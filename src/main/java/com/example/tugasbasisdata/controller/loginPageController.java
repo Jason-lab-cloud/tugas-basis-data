@@ -14,6 +14,7 @@ import java.io.IOException;
 import com.example.tugasbasisdata.dtos.siswa;
 import java.sql.*;
 import com.example.tugasbasisdata.source.datasource;
+import com.example.tugasbasisdata.controller.guruController;
 
 public class loginPageController {
 
@@ -69,6 +70,10 @@ public class loginPageController {
                     loader = new FXMLLoader(HelloApplication.class.getResource("guru.fxml"));
                     scene = new Scene(loader.load());
                     app.getPrimaryStage().setScene(scene);
+                    guruController g = loader.getController();
+                    g.setUserId(userid);
+                    boolean a = g.isWaliKelas(userid);
+                    g.setWaliKelas(a);
                 }
             } else {
                 showAlert("Login Success", "login sebagai " + selectedRole);

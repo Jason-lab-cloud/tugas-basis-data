@@ -17,32 +17,78 @@ import com.example.tugasbasisdata.dtos.jadwal;
 import javafx.scene.control.TextField;
 
 public class adminController {
-    @FXML
-    private TextField kelas_id;
+    public class AdminController {
 
-    @FXML
-    private TextField nama_kelas;
+        @FXML
+        private TextField tfNamaSiswa, tfNIS, tfTanggalLahir;
+        @FXML
+        private TextField tfHari, tfJamMulai, tfJamSelesai, tfNamaGuru, tfPelajaran;
+        @FXML
+        private TextField tfNISPembagian, tfKelasPembagian;
 
-    @FXML
-    private TextField ht_id;
+        // Input Data Siswa
+        @FXML
+        public void simpanSiswa() {
+            String sql = "INSERT INTO siswa (nis, nama, tanggal_lahir) VALUES (?, ?, ?)";
 
-    @FXML
-    public void addclass(){
-        HelloApplication app = HelloApplication.getApplicationInstance();
-        FXMLLoader loader;
-        Scene scene;
-        int id = Integer.parseInt(kelas_id.getText());
-        String name = nama_kelas.getText();
-        int home = Integer.parseInt(ht_id.getText());
-        try (Connection c = datasource.getConnection()){
-            PreparedStatement stmt = c.prepareStatement("insert into kelas (kelas_id, nama_kelas, homeroom_teacher_id) values (?, ?, ?)") ;
-            stmt.setInt(1, id);
-            stmt.setString(2,name);
-            stmt.setInt(3, home);
-            ResultSet rs = stmt.executeQuery();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+            try (Connection conn = datasource.getConnection();
+                 PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+                stmt.setString(1, tfNIS.getText());
+                stmt.setString(2, tfNamaSiswa.getText());
+                stmt.setString(3, tfTanggalLahir.getText());
+                stmt.executeUpdate();
+
+                showAlert("Berhasil", "Data siswa berhasil disimpan.");
+            } catch (SQLException e) {
+                showAlert("Error", e.getMessage());
+            }
+        }
+
+        // Input Jadwal Kelas
+        @FXML
+        public void simpanJadwal() {
+            String sql = "INSERT INTO jadwal (hari, jam_mulai, jam_selesai, nama_guru, mata_pelajaran) VALUES (?, ?, ?, ?, ?)";
+
+            try (Connection conn = datasource.getConnection();
+                 PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+                stmt.setString(1, tfHari.getText());
+                stmt.setString(2, tfJamMulai.getText());
+                stmt.setString(3, tfJamSelesai.getText());
+                stmt.setString(4, tfNamaGuru.getText());
+                stmt.setString(5, tfPelajaran.getText());
+                stmt.executeUpdate();
+
+                showAlert("Berhasil", "Data jadwal berhasil disimpan.");
+            } catch (SQLException e) {
+                showAlert("Error", e.getMessage());
+            }
+        }
+
+        // Bagi Kelas ke Siswa
+        @FXML
+        public void bagiKelas() {
+            String sql = "INSERT INTO kelas_siswa (nis, kelas) VALUES (?, ?)";
+
+            try (Connection conn = datasource.getConnection();
+                 PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+                stmt.setString(1, tfNISPembagian.getText());
+                stmt.setString(2, tfKelasPembagian.getText());
+                stmt.executeUpdate();
+
+                showAlert("Berhasil", "Siswa berhasil dimasukkan ke kelas.");
+            } catch (SQLException e) {
+                showAlert("Error", e.getMessage());
+            }
+        }
+
+        private void showAlert(String title, String content) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle(title);
+            alert.setContentText(content);
+            alert.showAndWait();
         }
     }
-
 }

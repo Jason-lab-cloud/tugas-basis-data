@@ -47,7 +47,6 @@ public class loginPageController {
                     loader = new FXMLLoader(HelloApplication.class.getResource("admin.fxml"));
                     scene = new Scene(loader.load());
                     app.getPrimaryStage().setScene(scene);
-                    adminController adminController = loader.getController();
                 }
                 else if (selectedRole.equals("Student")){
                     app.getPrimaryStage().setTitle("siswa View");

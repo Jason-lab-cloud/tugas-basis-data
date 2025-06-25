@@ -2,24 +2,16 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml"
-            xmlns="http://javafx.com/javafx"
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.example.tugasbasisdata.controller.siswaController">
 
-   <VBox layoutX="40" layoutY="40" spacing="15" alignment="TOP_LEFT">
-      <padding>
-         <Insets top="20" bottom="20" left="20" right="20"/>
-      </padding>
+   <Label layoutX="40" layoutY="30" text="Halaman Siswa" style="-fx-font-size: 18px;" />
 
-      <Label text="Halaman Siswa" style="-fx-font-size: 18px;"/>
+   <Button layoutX="40" layoutY="70" text="Lihat Biodata" onAction="#RevealBiodata"/>
+   <Button layoutX="160" layoutY="70" text="Lihat Jadwal Kelas" />
+   <Button layoutX="320" layoutY="70" text="Lihat Nilai Ujian" />
 
-      <Button text="Lihat Biodata"/>
-      <Button text="Lihat Jadwal Kelas"/>
-      <Button text="Lihat Nilai Ujian"/>
-
-      <TableView fx:id="tabelData" prefHeight="300" prefWidth="600"/>
-   </VBox>
-
+   <TableView fx:id="tabelData" layoutX="40" layoutY="120" prefWidth="600" prefHeight="300" />
 </AnchorPane>

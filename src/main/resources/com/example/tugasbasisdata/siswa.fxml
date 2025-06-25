@@ -3,15 +3,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/17.0.12"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.tugasbasisdata.controller.siswaController">
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.tugasbasisdata.controller.siswaController" prefWidth="600" prefHeight="400">
+   <Label text="Panel Siswa" layoutX="250" layoutY="20" style="-fx-font-size: 18px;"/>
 
-   <Label layoutX="40" layoutY="30" text="Halaman Siswa" style="-fx-font-size: 18px;" />
+   <Button text="Lihat Biodata" layoutX="50" layoutY="70" onAction="#lihatBiodata"/>
+   <Button text="Lihat Jadwal" layoutX="200" layoutY="70" onAction="#lihatJadwal"/>
+   <Button text="Lihat Nilai" layoutX="350" layoutY="70" onAction="#lihatNilai"/>
 
-   <Button layoutX="40" layoutY="70" text="Lihat Biodata" onAction="#RevealBiodata"/>
-   <Button layoutX="160" layoutY="70" text="Lihat Jadwal Kelas" />
-   <Button layoutX="320" layoutY="70" text="Lihat Nilai Ujian" />
-
-   <TableView fx:id="tabelData" layoutX="40" layoutY="120" prefWidth="600" prefHeight="300" />
+   <TextArea fx:id="areaOutput" layoutX="50" layoutY="120" prefWidth="500" prefHeight="220" wrapText="true"/>
 </AnchorPane>

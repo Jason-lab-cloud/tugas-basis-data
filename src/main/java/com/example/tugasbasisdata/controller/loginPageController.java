@@ -9,10 +9,12 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-
+import com.example.tugasbasisdata.controller.siswaController;
 import java.io.IOException;
+import com.example.tugasbasisdata.dtos.siswa;
 import java.sql.*;
 import com.example.tugasbasisdata.source.datasource;
+
 public class loginPageController {
 
     @FXML
@@ -26,33 +28,41 @@ public class loginPageController {
 
     @FXML
     private void handleLogin() {
-        HelloApplication app = HelloApplication.getApplicationInstance();
-        FXMLLoader loader;
-        Scene scene;
         String selectedRole = roleComboBox.getValue();
         String password = passwordField1.getText();
         String Username = UsernameField.getText();
         try (Connection c = datasource.getConnection()){
+            HelloApplication app = HelloApplication.getApplicationInstance();
+            FXMLLoader loader;
+            Scene scene;
             System.out.println("jesus");
             PreparedStatement stmt = c.prepareStatement("select * from users where username = ? and password = ? and role = ?;") ;
             stmt.setString(1, Username);
             stmt.setString(2,password);
-            stmt.setString(3, selectedRole.toLowerCase());
+            String role;
+            if (selectedRole.equalsIgnoreCase("teacher")){
+                role = "guru";
+            } else if (selectedRole.equalsIgnoreCase("student")){
+                role = "siswa";
+            }else role = "admin";
+            stmt.setString(3, role);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()){
+                int userid = rs.getInt("user_id");
                 System.out.println("hello");
                 if (selectedRole.equals("Admin")){
-                    System.out.println("check1");
-                    app.getPrimaryStage().setTitle("admin View");
                     loader = new FXMLLoader(HelloApplication.class.getResource("admin.fxml"));
                     scene = new Scene(loader.load());
                     app.getPrimaryStage().setScene(scene);
+                    app.getPrimaryStage().setTitle("admin View");
                 }
                 else if (selectedRole.equals("Student")){
-                    app.getPrimaryStage().setTitle("siswa View");
                     loader = new FXMLLoader(HelloApplication.class.getResource("siswa.fxml"));
                     scene = new Scene(loader.load());
                     app.getPrimaryStage().setScene(scene);
+                    app.getPrimaryStage().setTitle("siswa View");
+                    siswaController s = loader.getController();
+                    s.setUserId(userid);
                 }
                 else {
                     app.getPrimaryStage().setTitle("guru View");

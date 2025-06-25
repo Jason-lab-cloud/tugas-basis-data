@@ -5,15 +5,47 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="300" prefWidth="400" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tugasbasisdata.controller.adminController">
-   <children>
-      <Label layoutX="10.0" layoutY="10.0" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Admin Menu" />
-      <Button layoutX="165.0" layoutY="14.0" text="Input Data Siswa" />
-      <Button layoutX="286.0" layoutY="14.0" text="Input Jadwal Kelas" />
-      <Button layoutY="82.0" onAction="#addclass" prefHeight="27.0" prefWidth="165.0" text="Pembagian Kelas &amp; Set Wali" />
-      <TextField fx:id="kelas_id" layoutX="14.0" layoutY="125.0" text="Kelas_id" />
-      <TextField fx:id="nama_kelas" layoutX="14.0" layoutY="169.0" text="Nama_kelas" />
-      <TextField fx:id="ht_id" layoutX="14.0" layoutY="220.0" text="id_WK" />
-   </children>
+<AnchorPane prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tugasbasisdata.controller.adminController">
+
+   <!-- Judul -->
+   <Label layoutX="350" layoutY="20" style="-fx-font-size: 20px;" text="Admin Panel" />
+
+   <!-- === Form Tambah Siswa === -->
+   <Label layoutX="50" layoutY="60" style="-fx-font-weight: bold;" text="Tambah Siswa" />
+   <TextField fx:id="tfID" layoutX="50.0" layoutY="90.0" prefHeight="25.0" prefWidth="250.0" promptText="ID" />
+
+   <TextField fx:id="tfNIS" layoutX="50.0" layoutY="455.0" prefWidth="250" promptText="NIS" />
+   <TextField fx:id="tfNama" layoutX="50" layoutY="130" prefWidth="250" promptText="Nama" />
+   <TextField fx:id="tfEmail" layoutX="50" layoutY="170" prefWidth="250" promptText="Email" />
+   <TextField fx:id="tfTanggalLahir" layoutX="50" layoutY="210" prefWidth="250" promptText="Tanggal Lahir (yyyy-mm-dd)" />
+   <TextField fx:id="tfAlamat" layoutX="50" layoutY="250" prefWidth="250" promptText="Alamat" />
+   <TextField fx:id="tfGender" layoutX="50" layoutY="290" prefWidth="250" promptText="Gender (L/P)" />
+   <TextField fx:id="tfTahunMasuk" layoutX="50" layoutY="330" prefWidth="250" promptText="Tahun Masuk" />
+
+   <TextField fx:id="tfUsername" layoutX="50" layoutY="370" prefWidth="250" promptText="Username" />
+   <TextField fx:id="tfPassword" layoutX="50" layoutY="410" prefWidth="250" promptText="Password" />
+
+   <Button layoutX="100.0" layoutY="546.0" onAction="#simpanSiswa" prefWidth="150" text="Simpan Siswa" />
+
+   <!-- === Form Tambah Jadwal === -->
+   <Label layoutX="450" layoutY="60" style="-fx-font-weight: bold;" text="Tambah Jadwal" />
+
+   <TextField fx:id="tfHari" layoutX="450" layoutY="90" prefWidth="250" promptText="Hari (1=Senin ... 5=Jumat)" />
+   <TextField fx:id="tfJamMulai" layoutX="450" layoutY="130" prefWidth="250" promptText="Jam Mulai (hh:mm:ss)" />
+   <TextField fx:id="tfJamSelesai" layoutX="450" layoutY="170" prefWidth="250" promptText="Jam Selesai (hh:mm:ss)" />
+   <TextField fx:id="tfClassID" layoutX="450" layoutY="210" prefWidth="250" promptText="ID Kelas" />
+   <TextField fx:id="tfGuruID" layoutX="450" layoutY="250" prefWidth="250" promptText="ID Guru" />
+   <TextField fx:id="tfMapelID" layoutX="450" layoutY="290" prefWidth="250" promptText="ID Mapel" />
+
+   <Button layoutX="500" layoutY="340" onAction="#simpanJadwal" prefWidth="150" text="Simpan Jadwal" />
+
+   <!-- Status -->
+   <Label fx:id="lblStatus" layoutX="50" layoutY="520" style="-fx-font-weight: bold;" textFill="green" />
+
+   <Label layoutX="450" layoutY="400" style="-fx-font-weight: bold;" text="Tambah Kelas" />
+   <TextField fx:id="tfNamaKelas" layoutX="450" layoutY="430" prefWidth="250" promptText="Nama Kelas (misal: VII-A)" />
+   <TextField fx:id="tfWaliKelasId" layoutX="450" layoutY="470" prefWidth="250" promptText="ID Wali Kelas (teacher_id)" />
+   <Button layoutX="500" layoutY="510" onAction="#tambahKelas" text="Simpan Kelas" />
+   <TextField fx:id="tfkelas" layoutX="44.0" layoutY="497.0" prefHeight="25.0" prefWidth="250.0" promptText="Kelas_id" />
 
 </AnchorPane>

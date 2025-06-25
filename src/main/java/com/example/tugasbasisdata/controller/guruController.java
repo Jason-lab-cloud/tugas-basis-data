@@ -48,7 +48,7 @@ public class guruController {
             areaOutput.setText(sb.toString());
 
         } catch (SQLException e) {
-            areaOutput.setText("❌ Gagal ambil jadwal: " + e.getMessage());
+            areaOutput.setText(" Gagal ambil jadwal: " + e.getMessage());
         }
     }
 
@@ -164,7 +164,7 @@ public class guruController {
             stmt.setInt(1, teacherId);
             ResultSet rs = stmt.executeQuery();
 
-            StringBuilder sb = new StringBuilder("📋 Rapor Siswa:\n");
+            StringBuilder sb = new StringBuilder(" Rapor Siswa:\n");
             while (rs.next()) {
                 sb.append("• ")
                         .append(rs.getString("name"))
@@ -181,7 +181,7 @@ public class guruController {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            areaOutput.setText("❌ Gagal ambil rapor.");
+            areaOutput.setText(" Gagal ambil rapor.");
         }
     }
 

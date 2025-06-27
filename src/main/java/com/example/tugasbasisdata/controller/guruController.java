@@ -147,6 +147,7 @@ public class guruController {
             areaOutput.setText(" Anda bukan wali kelas.");
             return;
         }
+        loadGuruData();
 
         String sql = """
         SELECT s.name, m.subjects_name, t.test_name, t.nilai
